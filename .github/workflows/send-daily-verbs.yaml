@@ -24,7 +24,7 @@ jobs:
       - name: Create and populate .Renviron file
         run: |
           echo R_TELEGRAM_BOT_verbs="$TELEGRAM_TOKEN" >> ~/.Renviron
-          shell: bash
+        shell: bash
       - name: Execute Bot Script
         run: |
           Rscript R/send-message.R
