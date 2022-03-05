@@ -31,6 +31,6 @@ jobs:
           remotes::install_cran("telegram.bot")
           remotes::install_cran("purrr")
         shell: Rscript {0}
-      - name: Execute Bot Script
+      - name: Execute bot script
         run: |
           Rscript R/send-message.R
