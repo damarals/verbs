@@ -16,6 +16,9 @@ jobs:
         with:
           fetch-depth: 0
       - uses: r-lib/actions/setup-r@v1
+      - name: Install dependencies ubuntu
+        run: |
+          sudo apt-get install libcurl4-openssl-dev
       - name: Create and populate .Renviron file
         run: |
           echo R_TELEGRAM_BOT_verbs="$TELEGRAM_TOKEN" >> ~/.Renviron
