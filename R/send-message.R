@@ -16,13 +16,13 @@ daily_verbs <- verbs[sample(x = 1:nrow(verbs), size = 2),]
 
 # Send message
 purrr::walk(unique(chat_ids), function(chat_id) {
-  msg_head <- paste0("_Today Verbs_ (", format(Sys.time(), '%d/%m/%y'), ")")
+  msg_head <- paste0("_Today Verbs (", format(Sys.time(), '%d/%m/%y'), ")_\n\n")
   msg_body <- purrr::map_chr(1:nrow(daily_verbs), function(rw) {
-    paste0("Base form: *", daily_verbs[rw,]$infinitivo, "*<br>",
-           "Past form: *", daily_verbs[rw,]$passado_simples, "*<br>",
-           "Past participle: *", daily_verbs[rw,]$participio_passado, "*<br>",
+    paste0("Base form: *", daily_verbs[rw,]$infinitivo, "*\n",
+           "Past form: *", daily_verbs[rw,]$passado_simples, "*\n",
+           "Past participle: *", daily_verbs[rw,]$participio_passado, "*\n",
            "Portuguese translation: *", daily_verbs[rw,]$significado, "*")
   })
-  msg <- paste0(msg_head, paste0(msg_body, collapse = "<br>---<br>"), collapse = "<br>")
+  msg <- paste0(msg_head, paste0(msg_body, collapse = "\n---\n"), collapse = "\n")
   bot$sendMessage(chat_id, text = msg, parse_mode = "Markdown")
 })
