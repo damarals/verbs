@@ -1,4 +1,5 @@
 # Initialize bot
+print(telegram.bot::bot_token("verbs"))
 bot <- telegram.bot::Bot(token = telegram.bot::bot_token("verbs"))
 
 # Get updates
