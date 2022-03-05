@@ -16,15 +16,16 @@ jobs:
         with:
           fetch-depth: 0
       - uses: r-lib/actions/setup-r@v1
-      - name: Install telegram.bot and purrr
-        run: |
-          install.packages("telegram.bot")
-          install.packages("purrr")
-        shell: Rscript {0}
       - name: Create and populate .Renviron file
         run: |
           echo R_TELEGRAM_BOT_verbs="$TELEGRAM_TOKEN" >> ~/.Renviron
         shell: bash
+      - name: Install telegram.bot and purrr
+        run: |
+          install.packages("remotes")
+          remotes::install_cran("telegram.bot")
+          remotes::install_cran("purrr")
+        shell: Rscript {0}
       - name: Execute Bot Script
         run: |
           Rscript R/send-message.R
