@@ -1,11 +1,8 @@
 # Initialize bot
 bot <- telegram.bot::Bot(token = telegram.bot::bot_token("verbs"))
 
-# Get updates
-updates <- bot$getUpdates()
-
-# Retrieve chat ids
-chat_ids <- sapply(updates, function(msg) msg$from_chat_id())
+# Chat ids
+chat_ids <- c("754387559") # my telegram id
 
 # Create daily verbs message
 seed <- as.numeric(Sys.time())
